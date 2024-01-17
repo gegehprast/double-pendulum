@@ -1,5 +1,4 @@
 import p5 from 'p5'
-import { text } from './helper'
 
 interface WorldSettings {
     center: p5.Vector
@@ -86,6 +85,11 @@ class Pendulum {
     stop() {
         this.aVelocity = 0
         this.aAcceleration = 0
+    }
+
+    reset() {
+        this.stop()
+        this.angle = 0
     }
 
     update() {
