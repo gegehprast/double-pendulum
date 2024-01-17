@@ -109,6 +109,12 @@ class Pendulum {
 
         this.aVelocity += this.aAcceleration
         this.aVelocity *= 1 - this.world.friction
+
+        // stop the pendulum when it's almost still
+        if (this.p.abs(this.aVelocity) < 0.0002 && this.p.abs(this.angle) < 0.0002) {
+            this.aVelocity = 0
+            this.angle = 0
+        }
     }
 
     calcAcceleration() {
