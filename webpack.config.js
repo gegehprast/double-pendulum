@@ -6,7 +6,7 @@ module.exports = {
     entry: './src/index.ts',
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Caching',
+            title: 'Double Pendulum',
         }),
     ],
     devtool: 'inline-source-map',
