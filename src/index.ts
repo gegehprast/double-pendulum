@@ -25,6 +25,7 @@ const world = {
 let upper: Pendulum
 let lower: Pendulum
 let pauseButton: p5.Element
+let resetButton: p5.Element
 let trail: p5.Graphics
 const trails: p5.Vector[] = []
 let hue = 0
@@ -52,7 +53,8 @@ const sketch = (p: p5) => {
 
         // pause button in the bottom left corner
         pauseButton = p.createButton('Pause')
-        pauseButton.position(10, p.height - 50)
+        pauseButton.style('width', '60px')
+        pauseButton.position(18, p.height - 50)
         pauseButton.mousePressed(() => {
             if (p.isLooping()) {
                 p.noLoop()
@@ -61,6 +63,15 @@ const sketch = (p: p5) => {
                 p.loop()
                 pauseButton.html('Pause')
             }
+        })
+
+        // reset button in the bottom left corner
+        resetButton = p.createButton('Reset')
+        resetButton.style('width', '60px')
+        resetButton.position(18 + pauseButton.width + 10, p.height - 50)
+        resetButton.mousePressed(() => {
+            upper.reset()
+            lower.reset()
         })
     }
 
@@ -131,6 +142,7 @@ const sketch = (p: p5) => {
         text(p, `Friction: ${world.friction}`, -CENTER_X + 10, -CENTER_Y + 155)
         text(p, `Gravity: ${world.gravity}`, -CENTER_X + 10, -CENTER_Y + 170)
         text(p, `FPS: ${p.frameRate().toFixed(2)}`, -CENTER_X + 10, -CENTER_Y + 185)
+        text(p, 'Drag the balls!', -CENTER_X + 10, p.height - CENTER_Y - 100)
     }
 }
 
