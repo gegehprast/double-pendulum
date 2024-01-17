@@ -131,7 +131,7 @@ class Pendulum {
             const num2 = -this.other.mass * this.world.gravity * this.p.sin(this.angle - 2 * this.other.angle)
             // − 2 sin(θ1 − θ2) m2
             const num3 = -2 * this.p.sin(this.angle - this.other.angle) * this.other.mass
-            // θ2 * θ2 L2 + θ1'2 L1 cos(θ1 − θ2)
+            // θ2' θ2' L2 + θ1' θ1' L1 cos(θ1 − θ2)
             const num4 =
                 this.other.aVelocity * this.other.aVelocity * this.other.length +
                 this.aVelocity * this.aVelocity * this.length * this.p.cos(this.angle - this.other.angle)
@@ -142,11 +142,11 @@ class Pendulum {
         } else {
             // 2 sin(θ1 − θ2)
             const num5 = 2 * this.p.sin(this.other.angle - this.angle)
-            // θ1 * θ1 L1 (m1 + m2)
+            // θ1' θ1' L1 (m1 + m2)
             const num6 = this.other.aVelocity * this.other.aVelocity * this.other.length * (this.other.mass + this.mass)
             // g(m1 + m2) cos θ1
             const num7 = this.world.gravity * (this.other.mass + this.mass) * this.p.cos(this.other.angle)
-            // θ2 * θ2 L2 m2 cos(θ1 − θ2))
+            // θ2' θ2' L2 m2 cos(θ1 − θ2))
             const num8 = this.aVelocity * this.aVelocity * this.length * this.mass * this.p.cos(this.other.angle - this.angle)
             // L2 (2 m1 + m2 − m2 cos(2 θ1 − 2 θ2)
             const den2 = this.length * (2 * this.other.mass + this.mass - this.other.mass * this.p.cos(2 * this.other.angle - 2 * this.angle))
